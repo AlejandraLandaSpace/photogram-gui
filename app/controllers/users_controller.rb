@@ -24,4 +24,18 @@ class UsersController < ApplicationController
   # render({:template=>"user_templates/add_user.html.erb"})
   redirect_to("/users/#{a_new_user.username}")
   end
+  def update
+    the_id = params.fetch("modify_user")
+    matching_user = User.where({:id=>the_id})
+    the_user = matching_user.at(0)
+
+    input_user = params.fetch("input_image")
+    
+    the_user.image = input_image
+    
+
+    the_user.save
+    next_url = "/photos/" + the_photo.id.to_s
+    redirect_to(next_url)
+  end
 end

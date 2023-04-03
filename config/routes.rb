@@ -4,7 +4,8 @@ get("/users",{:controller=>"users", :action=>"index"})
 get("/users/:username",{:controller=>"users", :action=>"show"})
 
 get("/insert_user",{:controller=>"users", :action=>"create"})
-# get("/users/:new_user",{:controller=>"users", :action=>"add_user"})
+get("/update_user/:modify_user",{:controller=>"users", :action=>"update"})
+
 
 
 get("/photos",{:controller=>"photos", :action=>"index"})
