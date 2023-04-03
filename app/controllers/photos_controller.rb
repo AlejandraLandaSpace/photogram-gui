@@ -11,4 +11,12 @@ class PhotosController < ApplicationController
     @the_photo = matching_photos.at(0)
     render({:template=>"photos_templates/show.html.erb"})
   end
+  def bye
+    @the_id = params.fetch("toast_id")
+    matching_photos = Photo.where({:id=>@the_id})
+    the_photo = matching_photos.at(0)
+    the_photo.destroy
+    # render({:template=>"photos_templates/bye.html.erb"})
+    redirect_to("/photos")
+  end
 end
