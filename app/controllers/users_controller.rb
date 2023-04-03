@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @list_of_users = matching_user.order({:username => :asc})
     render({:template=>"user_templates/index.html.erb"})
   end
+  
   def show
   url_username = params.fetch("username")
   matching_usernames = User.where({:username=>url_username})
@@ -14,15 +15,13 @@ class UsersController < ApplicationController
     render({:template=>"user_templates/show.html.erb"})
   # end
   end
-  def add
-    input_username = params.fetch("new_user")
-
-  a_new_user = Users.new
-  a_new_user.username = input_username
- 
-
-  a_new_user.save
-
-  redirect_to("/users/" + a_new_user)
+  def create
+    # Parameters: {"input_username"=>"ygigu", "username"=>"insert_user_record"}
+    input_username = params.fetch("input_username")
+    a_new_user = User.new
+    a_new_user.username = input_username
+    a_new_user.save
+  # render({:template=>"user_templates/add_user.html.erb"})
+  redirect_to("/users/#{a_new_user.username}")
   end
 end
