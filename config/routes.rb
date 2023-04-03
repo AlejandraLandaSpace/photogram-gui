@@ -13,4 +13,5 @@ get("/photos/:path_id",{:controller=>"photos", :action=>"show"})
 get("/delete_photo/:toast_id",{:controller=>"photos", :action=>"bye"})
 get("/insert_photo",{:controller=>"photos", :action=>"create"})
 get("/update_photo/:modify_id",{:controller=>"photos", :action=>"update"})
+get("/insert_comment_record",{:controller =>"photos", :action=> "update_all"})
 end

@@ -28,14 +28,13 @@ class UsersController < ApplicationController
     the_id = params.fetch("modify_user")
     matching_user = User.where({:id=>the_id})
     the_user = matching_user.at(0)
+    
+    input_user = params.fetch("username")
 
-    input_user = params.fetch("input_image")
-    
-    the_user.image = input_image
-    
+    the_user.username = input_user
 
     the_user.save
-    next_url = "/photos/" + the_photo.id.to_s
+    next_url = "/users/" + the_user.username.to_s
     redirect_to(next_url)
   end
 end

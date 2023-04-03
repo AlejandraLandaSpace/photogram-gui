@@ -50,4 +50,21 @@ class PhotosController < ApplicationController
     redirect_to(next_url)
     # render({:template=>"photos_templates/update.html.erb"})
   end
+  def update_all
+   the_id = params.fetch("input_photo_id")
+   matching_id = Photo.where({:id=>the_id})
+   the_page = matching_id.at(0)
+
+  input_body = params.fetch("input_body")
+  input_photo_id = params.fetch("input_photo_id")
+  
+  a_new_comment = Comment.new
+ 
+  a_new_comment.body = input_body
+  a_new_comment.save
+   
+  redirect_to("/photos/#{the_id}")
+
+
+  end
 end
