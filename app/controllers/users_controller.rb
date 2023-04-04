@@ -25,16 +25,17 @@ class UsersController < ApplicationController
   redirect_to("/users/#{a_new_user.username}")
   end
   def update
-    the_id = params.fetch("modify_user")
-    matching_user = User.where({:id=>the_id})
-    the_user = matching_user.at(0)
+    the_user = params.fetch("modify_user")
+    matching_user = User.where({:username=>the_user})
+    current_user = matching_user.at(0)
     
-    input_user = params.fetch("username")
+    input_user = params.fetch("input_username")
 
-    the_user.username = input_user
+    current_user.username = input_user
 
-    the_user.save
-    next_url = "/users/" + the_user.username.to_s
-    redirect_to(next_url)
+    current_user.save
+
+
+    redirect_to("/users/#{current_user.username}")
   end
 end

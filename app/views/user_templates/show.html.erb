@@ -5,9 +5,9 @@
 <dd><%=@the_user.id%></dd>
 <dt>Edit user</dt>
 <dd>
-    <form action="/update_user/<%=@the_user.username%>" >
-      <label for="Username">Username</label>
-      <input id="Username" type="text" name="username" value="dannydevito4twenty" placeholder="Enter a username..." >
+    <form action="/update_user/<%=@the_user.username%>">
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="input_username" value="<%=@the_user.username%>" placeholder="Enter a username..." >
 
       <button type="submit">Update user</button>
     </form>
